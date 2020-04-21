@@ -15,7 +15,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    UserDefaults.standard.register(defaults: [
+      Constants.appVersionUserDefaultsKey: "",
+      Constants.jsonLoadedToPersistentStoreDefaultsKey: false
+    ])
+    
+    let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    let previousVersion = UserDefaults.standard.string(forKey: Constants.appVersionUserDefaultsKey )
+    
+    if previousVersion == "" {
+      // first launch
+      
+      // load JSON to persistent store
+      if let loginModelCodables = parseLocalJSON() {
+        let context = persistentContainer.viewContext
+        for loginModelCodable in loginModelCodables.loginModel {
+          let loginModel = LoginModel(context: context)
+          let role = Role(context: context)
+          loginModel.id = Int32(loginModelCodable.id)!
+          loginModel.name = loginModelCodable.name
+          loginModel.avatarUrl = loginModelCodable.avatarURL
+          loginModel.password = loginModelCodable.passHash
+          
+          // TODO: - Implement a way to check for duplicates
+          role.id = FacadeAPI.shared.getNewIdForEntityType(Role.self, in: context)!
+          role.name = loginModelCodable.role
+          loginModel.role = role
+
+          saveContext()
+        }
+      }
+      // set version to UserDefaults
+      UserDefaults.standard.setValue(currentAppVersion, forKey: Constants.appVersionUserDefaultsKey)
+    } else if previousVersion == currentAppVersion {
+      // same version
+    } else {
+      // other version
+      UserDefaults.standard.setValue(currentAppVersion, forKey: Constants.appVersionUserDefaultsKey)
+    }
+    
+    
+    
+    
+    
     return true
   }
 
