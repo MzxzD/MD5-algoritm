@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5049BCE24508FC20092FEB6 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5049BCD24508FC20092FEB6 /* SpinnerViewController.swift */; };
 		B5308054244F43AA006BF4D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308053244F43AA006BF4D8 /* AppDelegate.swift */; };
 		B5308056244F43AA006BF4D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308055244F43AA006BF4D8 /* SceneDelegate.swift */; };
 		B5308058244F43AA006BF4D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308057244F43AA006BF4D8 /* ViewController.swift */; };
@@ -29,9 +30,14 @@
 		B5308093244F7211006BF4D8 /* loginModelCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308092244F7211006BF4D8 /* loginModelCodable.swift */; };
 		B5308096244F728B006BF4D8 /* FacadeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308095244F728B006BF4D8 /* FacadeAPI.swift */; };
 		B5308099244F7597006BF4D8 /* SerializationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308098244F7597006BF4D8 /* SerializationManager.swift */; };
+		B53907302450D05100E64EFA /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539072F2450D05100E64EFA /* CoreDataAPI.swift */; };
+		B53907332450D4F500E64EFA /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53907322450D4F500E64EFA /* MD5.swift */; };
+		B53907372450D57300E64EFA /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53907362450D57300E64EFA /* String + Extensions.swift */; };
+		B53907392450D5CC00E64EFA /* Data + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53907382450D5CC00E64EFA /* Data + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5049BCD24508FC20092FEB6 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		B5308050244F43AA006BF4D8 /* MD5 algoritm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MD5 algoritm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5308053244F43AA006BF4D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5308055244F43AA006BF4D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,10 @@
 		B5308092244F7211006BF4D8 /* loginModelCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModelCodable.swift; sourceTree = "<group>"; };
 		B5308095244F728B006BF4D8 /* FacadeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacadeAPI.swift; sourceTree = "<group>"; };
 		B5308098244F7597006BF4D8 /* SerializationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationManager.swift; sourceTree = "<group>"; };
+		B539072F2450D05100E64EFA /* CoreDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
+		B53907322450D4F500E64EFA /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
+		B53907362450D57300E64EFA /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		B53907382450D5CC00E64EFA /* Data + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5049BCC24508F9B0092FEB6 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				B5049BCD24508FC20092FEB6 /* SpinnerViewController.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		B5308047244F43AA006BF4D8 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +106,8 @@
 		B5308052244F43AA006BF4D8 /* MD5 algoritm */ = {
 			isa = PBXGroup;
 			children = (
+				B53907352450D55E00E64EFA /* Extensions */,
+				B5049BCC24508F9B0092FEB6 /* CustomViews */,
 				B530808C244F6D23006BF4D8 /* Base */,
 				B5308082244F4C35006BF4D8 /* CustomCells */,
 				B5308075244F4740006BF4D8 /* Delegates */,
@@ -154,6 +174,8 @@
 		B530808C244F6D23006BF4D8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B53907312450D4C500E64EFA /* MD5 */,
+				B539072E2450D03500E64EFA /* CoreDataAPI */,
 				B5308097244F7579006BF4D8 /* SerializationManager */,
 				B5308094244F727A006BF4D8 /* Facade */,
 				B530808D244F6D48006BF4D8 /* ErrorHandling */,
@@ -185,6 +207,31 @@
 				B5308098244F7597006BF4D8 /* SerializationManager.swift */,
 			);
 			path = SerializationManager;
+			sourceTree = "<group>";
+		};
+		B539072E2450D03500E64EFA /* CoreDataAPI */ = {
+			isa = PBXGroup;
+			children = (
+				B539072F2450D05100E64EFA /* CoreDataAPI.swift */,
+			);
+			path = CoreDataAPI;
+			sourceTree = "<group>";
+		};
+		B53907312450D4C500E64EFA /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				B53907322450D4F500E64EFA /* MD5.swift */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
+		B53907352450D55E00E64EFA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B53907362450D57300E64EFA /* String + Extensions.swift */,
+				B53907382450D5CC00E64EFA /* Data + Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,19 +310,24 @@
 				B5308058244F43AA006BF4D8 /* ViewController.swift in Sources */,
 				B5308088244F665C006BF4D8 /* Constants.swift in Sources */,
 				B530805E244F43AA006BF4D8 /* MD5_algoritm.xcdatamodeld in Sources */,
+				B53907302450D05100E64EFA /* CoreDataAPI.swift in Sources */,
 				B530808B244F6B84006BF4D8 /* URLSesstion.swift in Sources */,
+				B53907392450D5CC00E64EFA /* Data + Extensions.swift in Sources */,
 				B5308093244F7211006BF4D8 /* loginModelCodable.swift in Sources */,
+				B53907332450D4F500E64EFA /* MD5.swift in Sources */,
 				B5308081244F4BCD006BF4D8 /* UsersTableViewController.swift in Sources */,
 				B5308054244F43AA006BF4D8 /* AppDelegate.swift in Sources */,
 				B5308085244F4C54006BF4D8 /* UserTableViewCell.swift in Sources */,
 				B5308096244F728B006BF4D8 /* FacadeAPI.swift in Sources */,
 				B530807F244F4ADA006BF4D8 /* LoginModel+CoreDataProperties.swift in Sources */,
 				B5308091244F704A006BF4D8 /* ErrorAlertView.swift in Sources */,
+				B53907372450D57300E64EFA /* String + Extensions.swift in Sources */,
 				B530807D244F4ADA006BF4D8 /* Role+CoreDataProperties.swift in Sources */,
 				B5308099244F7597006BF4D8 /* SerializationManager.swift in Sources */,
 				B530807C244F4ADA006BF4D8 /* Role+CoreDataClass.swift in Sources */,
 				B530807E244F4ADA006BF4D8 /* LoginModel+CoreDataClass.swift in Sources */,
 				B5308056244F43AA006BF4D8 /* SceneDelegate.swift in Sources */,
+				B5049BCE24508FC20092FEB6 /* SpinnerViewController.swift in Sources */,
 				B530808F244F6D6D006BF4D8 /* DataWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

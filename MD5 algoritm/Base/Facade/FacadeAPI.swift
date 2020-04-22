@@ -8,35 +8,51 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class FacadeAPI {
+  private var serializationManager: SerializationManager
+  private var errorAlert: ErrorAlertController
+  private var urlSession: URLSessionNetwork
+  private var coreDataApi: CoreDataAPI
   
   static let shared = FacadeAPI()
   
   private init() {
-    
+    serializationManager = SerializationManager()
+    errorAlert = ErrorAlertController()
+    urlSession = URLSessionNetwork()
+    coreDataApi = CoreDataAPI()
   }
   
   func getNewIdForEntityType<T: NSManagedObject>(_ type: T.Type, in managedContext: NSManagedObjectContext) -> Int32? {
-    let fetchRequest = T.fetchRequest()
-    fetchRequest.fetchLimit = 1
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-    
-    do {
-      let results = try managedContext.fetch(fetchRequest)
-      if let id = (results.first as? T)?.value(forKey: "id") as? Int32 {
-        if (id < 0) {
-          return id + 1
-        } else {
-          return 1
-        }
-      } else {
-        return 1
-      }
-    } catch let error as NSError {
-      print("Could not fetch \(error.localizedDescription)")
-    }
-    return nil
+    return coreDataApi.getNewIdForEntityType(type.self, in: managedContext)
   }
+  
+  func getImage(from urlString: String,completion: @escaping(UIImage?)->()) {
+    DispatchQueue.main.async {
+      if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+        if let imageData = appDelegate.ImageCache[urlString] {
+          completion(UIImage(data: imageData))
+        } else {
+          DispatchQueue.init(label: "ImageDownload").async {
+            self.urlSession.downloadImage(using: urlString) { (response) in
+              DispatchQueue.main.async {
+                if let data = response.data {
+                  appDelegate.ImageCache[urlString] = data
+                  completion(UIImage(data: data))
+                } else {
+                  completion(nil)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
   
 }

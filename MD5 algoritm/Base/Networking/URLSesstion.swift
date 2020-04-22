@@ -9,22 +9,27 @@
 import Foundation
 import UIKit
 
-func downloadImage(using urlString: String, comletion: @escaping(DataWrapper<Data>)->()) {
- var completionValue = DataWrapper<Data>(data: nil, error: nil)
-  if let url = URL(string: urlString) {
-    let urlSessionConfig = URLSessionConfiguration.default
-    urlSessionConfig.timeoutIntervalForRequest = 60
-    let urlSession = URLSession(configuration: urlSessionConfig)
-    // The image isn't cached, download it on a background thread
-    urlSession.dataTask(with: url) { (data, response, error) in
-      completionValue.data = data
-      completionValue.error = error?.localizedDescription
-      comletion(completionValue)
-    }.resume()
-    
-  } else {
-    completionValue.error = "Failed to cast URL from string"
-    comletion(completionValue)
-  }
+class URLSessionNetwork {
   
+  func downloadImage(using urlString: String, comletion: @escaping(DataWrapper<Data>)->()) {
+   var completionValue = DataWrapper<Data>(data: nil, error: nil)
+    if let url = URL(string: urlString) {
+      let urlSessionConfig = URLSessionConfiguration.default
+      urlSessionConfig.timeoutIntervalForRequest = 60
+      let urlSession = URLSession(configuration: urlSessionConfig)
+      // The image isn't cached, download it on a background thread
+      urlSession.dataTask(with: url) { (data, response, error) in
+        completionValue.data = data
+        completionValue.error = error?.localizedDescription
+        comletion(completionValue)
+      }.resume()
+    } else {
+      completionValue.error = "Failed to cast URL from string"
+      comletion(completionValue)
+    }
+    
+  }
+
 }
+
+

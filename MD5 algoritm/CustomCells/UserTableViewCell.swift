@@ -12,7 +12,7 @@ class UserTableViewCell: UITableViewCell {
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var userFullNameLabel: UILabel!
   @IBOutlet weak var roleLabel: UILabel!
-  
+  let spinner = SpinnerViewController()
   
   
   
@@ -27,4 +27,20 @@ class UserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+  func setupUI(using loginModel: LoginModel) {
+    self.userImageView.image = nil
+    self.userImageView.backgroundColor = nil
+    
+    self.userFullNameLabel.text = loginModel.name
+    self.roleLabel.text = loginModel.role?.name ?? ""
+    self.spinner.addSpinner(to: self.userImageView)
+    FacadeAPI.shared.getImage(from: loginModel.avatarUrl!) { (wrappedImage) in
+      self.spinner.removeSpinner(from: self.userImageView)
+      if let image = wrappedImage {
+        self.userImageView.image = image
+      } else {
+        self.userImageView.backgroundColor = .black
+      }
+    }
+  }
 }
