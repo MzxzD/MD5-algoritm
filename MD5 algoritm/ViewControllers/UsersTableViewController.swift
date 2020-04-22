@@ -18,19 +18,6 @@ class UsersTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    let lol =  parseLocalJSON()
-//    let hmm = lol?.loginModel
-//
-//    hmm?.forEach({ (hm) in
-//      downloadImage(using: hm.avatarURL) { (wrappedData) in
-//        if let unwrappedData = wrappedData.data {
-//          if let image = UIImage(data: unwrappedData) {
-//            self.images.append(image)
-//          }
-//        }
-//      }
-//    })
-//    tableView.register(UserTableViewCell.self, forCellReuseIdentifier: "usersCell")
     tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "usersCell")
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -38,21 +25,6 @@ class UsersTableViewController: UITableViewController {
     }
     managedContext = appDelegate.persistentContainer.viewContext
     fetchDataSourceForTableView()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-    let passwords = ["lele22", "spinoff3", "kick_ass", "underscore", "need aspirin", "cloverfield", "sadKeanu", "catnip", "fluffy", "password", "blueeyes", "limit"]
-    let hasedpass = passwords.map({ $0.hashed(.md5)?.uppercased() })
-    
-    for lol in loginModelObjects! {
-      for pas in hasedpass {
-        if pas! == lol.password! {
-          print("BINGOOOO!!")
-        }
-      }
-    }
   }
   
   // MARK: - Table view data source
@@ -78,14 +50,24 @@ class UsersTableViewController: UITableViewController {
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "showUser", sender: indexPath)
+  }
+  
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
+    if let indexPath = sender as? IndexPath {
+      switch segue.identifier {
+      case "showUser":
+        let userViewController = segue.destination as! UserViewController
+        userViewController.user = loginModelObjects![indexPath.row]
+      default:
+        return
+      }
+    }
   }
-  
   
   // MARK: - Private methods
   
@@ -95,14 +77,12 @@ class UsersTableViewController: UITableViewController {
       loginModelFetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
       do {
       let loginModelArray =  try managedContext.fetch(loginModelFetchRequest)
-        loginModelObjects = loginModelArray.sorted(by: {$0.id > $1.id})
+        loginModelObjects = loginModelArray
+        
       } catch {
         // error
       
       }
-//      fetchedResultsController = NSFetchedResultsController(fetchRequest: loginModelFetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-
-      
     }
   }
 }

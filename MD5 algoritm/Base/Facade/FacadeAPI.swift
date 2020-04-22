@@ -10,12 +10,19 @@ import Foundation
 import CoreData
 import UIKit
 
+enum validationEnum {
+  case success
+  case error
+  case fail
+}
+
 class FacadeAPI {
   private var serializationManager: SerializationManager
   private var errorAlert: ErrorAlertController
   private var urlSession: URLSessionNetwork
   private var coreDataApi: CoreDataAPI
   
+
   static let shared = FacadeAPI()
   
   private init() {
@@ -52,7 +59,21 @@ class FacadeAPI {
     }
   }
   
+  func validatePassword(with input: String, compareTo user: LoginModel) -> validationEnum {
+    if let passwordHased = input.hashed(.md5)?.uppercased(), let userPassword = user.password {
+      if passwordHased == userPassword {
+        return .success
+      } else {
+        return .fail
+      }
+    } else {
+      return .error
+    }
+  }
   
+  func showAlertView(from view: UIViewController, with title: String, and message: String) {
+    errorAlert.alert(viewToPresent: view, title: title, message: message)
+  }
   
   
 }

@@ -28,9 +28,7 @@ class UserTableViewCell: UITableViewCell {
     }
     
   func setupUI(using loginModel: LoginModel) {
-    self.userImageView.image = nil
-    self.userImageView.backgroundColor = nil
-    
+    self.userImageView.image = nil    
     self.userFullNameLabel.text = loginModel.name
     self.roleLabel.text = loginModel.role?.name ?? ""
     self.spinner.addSpinner(to: self.userImageView)
@@ -39,7 +37,7 @@ class UserTableViewCell: UITableViewCell {
       if let image = wrappedImage {
         self.userImageView.image = image
       } else {
-        self.userImageView.backgroundColor = .black
+        self.userImageView.image = #imageLiteral(resourceName: "NoImage")
       }
     }
   }

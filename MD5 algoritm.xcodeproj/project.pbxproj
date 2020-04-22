@@ -10,7 +10,7 @@
 		B5049BCE24508FC20092FEB6 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5049BCD24508FC20092FEB6 /* SpinnerViewController.swift */; };
 		B5308054244F43AA006BF4D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308053244F43AA006BF4D8 /* AppDelegate.swift */; };
 		B5308056244F43AA006BF4D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308055244F43AA006BF4D8 /* SceneDelegate.swift */; };
-		B5308058244F43AA006BF4D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308057244F43AA006BF4D8 /* ViewController.swift */; };
+		B5308058244F43AA006BF4D8 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5308057244F43AA006BF4D8 /* UserViewController.swift */; };
 		B530805B244F43AA006BF4D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5308059244F43AA006BF4D8 /* Main.storyboard */; };
 		B530805E244F43AA006BF4D8 /* MD5_algoritm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B530805C244F43AA006BF4D8 /* MD5_algoritm.xcdatamodeld */; };
 		B5308060244F43AC006BF4D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B530805F244F43AC006BF4D8 /* Assets.xcassets */; };
@@ -41,7 +41,7 @@
 		B5308050244F43AA006BF4D8 /* MD5 algoritm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MD5 algoritm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5308053244F43AA006BF4D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5308055244F43AA006BF4D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5308057244F43AA006BF4D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5308057244F43AA006BF4D8 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B530805A244F43AA006BF4D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B530805D244F43AA006BF4D8 /* MD5_algoritm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MD5_algoritm.xcdatamodel; sourceTree = "<group>"; };
 		B530805F244F43AC006BF4D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		B5308074244F472E006BF4D8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5308057244F43AA006BF4D8 /* ViewController.swift */,
+				B5308057244F43AA006BF4D8 /* UserViewController.swift */,
 				B5308080244F4BCD006BF4D8 /* UsersTableViewController.swift */,
 			);
 			path = ViewControllers;
@@ -307,7 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5308058244F43AA006BF4D8 /* ViewController.swift in Sources */,
+				B5308058244F43AA006BF4D8 /* UserViewController.swift in Sources */,
 				B5308088244F665C006BF4D8 /* Constants.swift in Sources */,
 				B530805E244F43AA006BF4D8 /* MD5_algoritm.xcdatamodeld in Sources */,
 				B53907302450D05100E64EFA /* CoreDataAPI.swift in Sources */,
