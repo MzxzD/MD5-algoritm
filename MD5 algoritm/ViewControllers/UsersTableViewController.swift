@@ -9,10 +9,9 @@
 import UIKit
 import CoreData
 
-class UsersTableViewController: UITableViewController {
+final class UsersTableViewController: UITableViewController {
   
   private var managedContext: NSManagedObjectContext!
-  private var fetchedResultsController: NSFetchedResultsController<LoginModel>?
   private var loginModelObjects: [LoginModel]?
   
   
@@ -78,10 +77,9 @@ class UsersTableViewController: UITableViewController {
       do {
       let loginModelArray =  try managedContext.fetch(loginModelFetchRequest)
         loginModelObjects = loginModelArray
-        
       } catch {
         // error
-      
+        FacadeAPI.shared.showAlertView(from: self, with: "Whoops...", and: "Failed to load content, please try again...")
       }
     }
   }

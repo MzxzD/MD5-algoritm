@@ -14,31 +14,19 @@ class UserTableViewCell: UITableViewCell {
   @IBOutlet weak var roleLabel: UILabel!
   let spinner = SpinnerViewController()
   
-  
-  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
   func setupUI(using loginModel: LoginModel) {
     self.userImageView.image = nil    
     self.userFullNameLabel.text = loginModel.name
-    self.roleLabel.text = loginModel.role?.name ?? ""
+    self.roleLabel.text = loginModel.role.name
     self.spinner.addSpinner(to: self.userImageView)
-    FacadeAPI.shared.getImage(from: loginModel.avatarUrl!) { (wrappedImage) in
+    FacadeAPI.shared.getImage(from: loginModel.avatarUrl ?? "") { [unowned self] (image) in
       self.spinner.removeSpinner(from: self.userImageView)
-      if let image = wrappedImage {
-        self.userImageView.image = image
-      } else {
-        self.userImageView.image = #imageLiteral(resourceName: "NoImage")
-      }
+      self.userImageView.image = image ?? #imageLiteral(resourceName: "NoImage")
     }
   }
 }

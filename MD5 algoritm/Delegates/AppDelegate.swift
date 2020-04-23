@@ -54,11 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // other version
       UserDefaults.standard.setValue(currentAppVersion, forKey: Constants.appVersionUserDefaultsKey)
     }
-    
-    
-    
-    
-    
     return true
   }
 

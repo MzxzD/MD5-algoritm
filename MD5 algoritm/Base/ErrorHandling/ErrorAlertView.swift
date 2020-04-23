@@ -11,7 +11,7 @@ import Foundation
 import Foundation
 import UIKit
 
-class ErrorAlertController {
+class AlertController {
   func alert(viewToPresent: UIViewController, title: String, message: String) -> Void
   {
     let action = UIAlertAction(title: "OK", style: .default)

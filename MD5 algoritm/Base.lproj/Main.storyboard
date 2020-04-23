@@ -33,7 +33,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ods-Hx-Y8u">
                                         <rect key="frame" x="8" y="8" width="398" height="124"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xq8-16-Hq5">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xq8-16-Hq5">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="124"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="5Xv-if-xIA"/>

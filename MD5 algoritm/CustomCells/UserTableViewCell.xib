@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="413" height="107"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VWl-kS-8vs">
-                        <rect key="frame" x="16" y="8" width="83" height="87"/>
+                        <rect key="frame" x="16" y="0.0" width="83" height="79"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="83" id="oiU-Zf-egu"/>
                         </constraints>
@@ -37,10 +37,10 @@
                 <constraints>
                     <constraint firstItem="O4Z-ML-Z83" firstAttribute="leading" secondItem="VWl-kS-8vs" secondAttribute="trailing" constant="8" id="B4q-K3-hZM"/>
                     <constraint firstItem="4vx-dJ-x86" firstAttribute="leading" secondItem="VWl-kS-8vs" secondAttribute="trailing" constant="8" id="P6C-QU-hcn"/>
-                    <constraint firstItem="VWl-kS-8vs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="PaF-y4-Bko"/>
+                    <constraint firstItem="VWl-kS-8vs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PaF-y4-Bko"/>
                     <constraint firstItem="VWl-kS-8vs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ut8-Wp-Qhe"/>
                     <constraint firstItem="O4Z-ML-Z83" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ax9-up-fgO"/>
-                    <constraint firstAttribute="bottom" secondItem="VWl-kS-8vs" secondAttribute="bottom" constant="-8" id="ek8-y9-Pdb"/>
+                    <constraint firstAttribute="bottom" secondItem="VWl-kS-8vs" secondAttribute="bottom" constant="8" id="ek8-y9-Pdb"/>
                     <constraint firstItem="4vx-dJ-x86" firstAttribute="top" secondItem="O4Z-ML-Z83" secondAttribute="bottom" constant="16" id="kx3-ed-PFZ"/>
                 </constraints>
             </tableViewCellContentView>

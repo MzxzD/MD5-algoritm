@@ -2,15 +2,15 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LoginModel" representedClassName="LoginModel" syncable="YES">
         <attribute name="avatarUrl" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
-        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="loginModel" inverseEntity="Role"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="password" attributeType="String"/>
+        <relationship name="role" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="loginModel" inverseEntity="Role"/>
     </entity>
     <entity name="Role" representedClassName="Role" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="loginModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginModel" inverseName="role" inverseEntity="LoginModel"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="loginModel" maxCount="1" deletionRule="Nullify" destinationEntity="LoginModel" inverseName="role" inverseEntity="LoginModel"/>
     </entity>
     <elements>
         <element name="LoginModel" positionX="-316.5078125" positionY="-70.48828125" width="128" height="118"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UITextFieldDelegate {
+final class UserViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
@@ -20,9 +20,11 @@ class UserViewController: UIViewController, UITextFieldDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupUI()
+    
     containerView.backgroundColor = nil
     nameLabel.text = user.name
-    roleLabel.text = user.role?.name
+    roleLabel.text = user.role.name
     passwordTextfield.isSecureTextEntry = true
     passwordTextfield.delegate = self
     passwordTextfield.returnKeyType = .done
@@ -31,11 +33,10 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
 
-    if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let imageData = appDelegate.ImageCache[user.avatarUrl!], let image = UIImage(data: imageData) {
-      userImageView.image = image
-    } else {
-      userImageView.image = #imageLiteral(resourceName: "NoImage")
+    FacadeAPI.shared.getImage(from: user.avatarUrl ?? "") { [unowned self] (image) in
+      self.userImageView.image = image ?? #imageLiteral(resourceName: "NoImage")
     }
+    
   }
   
   // MARK: - TextFiledDelegate
@@ -57,13 +58,17 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     if let text = passwordTextfield.text {
       switch FacadeAPI.shared.validatePassword(with: text, compareTo: user) {
       case .success:
-        FacadeAPI.shared.showAlertView(from: self, with: "Welcome \(user.name!)", and: "You may join the others")
+        FacadeAPI.shared.showAlertView(from: self, with: "Welcome \(user.name)", and: "You may join the others")
       case .fail:
-        FacadeAPI.shared.showAlertView(from: self, with: "Intruder!", and: "You are not \(user.name!)! GET OUT! ")
+        FacadeAPI.shared.showAlertView(from: self, with: "Intruder!", and: "You are not \(user.name)! GET OUT! ")
       case .error:
         FacadeAPI.shared.showAlertView(from: self, with: "Whoops...", and: "Something went wrong... Try again...")
       }
     }
+  }
+  
+  private func setupUI() {
+
   }
   
   @objc func dismissKeyboard() {

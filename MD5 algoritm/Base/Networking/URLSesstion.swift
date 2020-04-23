@@ -17,7 +17,6 @@ class URLSessionNetwork {
       let urlSessionConfig = URLSessionConfiguration.default
       urlSessionConfig.timeoutIntervalForRequest = 60
       let urlSession = URLSession(configuration: urlSessionConfig)
-      // The image isn't cached, download it on a background thread
       urlSession.dataTask(with: url) { (data, response, error) in
         completionValue.data = data
         completionValue.error = error?.localizedDescription
@@ -27,9 +26,7 @@ class URLSessionNetwork {
       completionValue.error = "Failed to cast URL from string"
       comletion(completionValue)
     }
-    
   }
-
 }
 
 

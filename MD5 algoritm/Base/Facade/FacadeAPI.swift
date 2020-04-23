@@ -18,7 +18,7 @@ enum validationEnum {
 
 class FacadeAPI {
   private var serializationManager: SerializationManager
-  private var errorAlert: ErrorAlertController
+  private var errorAlert: AlertController
   private var urlSession: URLSessionNetwork
   private var coreDataApi: CoreDataAPI
   
@@ -27,7 +27,7 @@ class FacadeAPI {
   
   private init() {
     serializationManager = SerializationManager()
-    errorAlert = ErrorAlertController()
+    errorAlert = AlertController()
     urlSession = URLSessionNetwork()
     coreDataApi = CoreDataAPI()
   }
@@ -60,8 +60,8 @@ class FacadeAPI {
   }
   
   func validatePassword(with input: String, compareTo user: LoginModel) -> validationEnum {
-    if let passwordHased = input.hashed(.md5)?.uppercased(), let userPassword = user.password {
-      if passwordHased == userPassword {
+    if let passwordHased = input.hashed(.md5)?.uppercased() {
+      if passwordHased == user.password {
         return .success
       } else {
         return .fail
@@ -74,6 +74,4 @@ class FacadeAPI {
   func showAlertView(from view: UIViewController, with title: String, and message: String) {
     errorAlert.alert(viewToPresent: view, title: title, message: message)
   }
-  
-  
 }

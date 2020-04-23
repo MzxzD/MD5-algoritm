@@ -18,7 +18,7 @@ extension Role {
     }
 
     @NSManaged public var id: Int32
-    @NSManaged public var name: String?
-    @NSManaged public var loginModel: LoginModel?
+    @NSManaged public var name: String
+    @NSManaged public var loginModel: LoginModel
 
 }

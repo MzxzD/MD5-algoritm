@@ -19,8 +19,8 @@ extension LoginModel {
 
     @NSManaged public var avatarUrl: String?
     @NSManaged public var id: Int32
-    @NSManaged public var name: String?
-    @NSManaged public var password: String?
-    @NSManaged public var role: Role?
+    @NSManaged public var name: String
+    @NSManaged public var password: String
+    @NSManaged public var role: Role
 
 }
