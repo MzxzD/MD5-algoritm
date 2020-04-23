@@ -22,20 +22,8 @@ final class UserViewController: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     setupUI()
     
-    containerView.backgroundColor = nil
-    nameLabel.text = user.name
-    roleLabel.text = user.role.name
-    passwordTextfield.isSecureTextEntry = true
-    passwordTextfield.delegate = self
-    passwordTextfield.returnKeyType = .done
-    passwordTextfield.becomeFirstResponder()
-    
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
-
-    FacadeAPI.shared.getImage(from: user.avatarUrl ?? "") { [unowned self] (image) in
-      self.userImageView.image = image ?? #imageLiteral(resourceName: "NoImage")
-    }
     
   }
   
@@ -68,7 +56,17 @@ final class UserViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupUI() {
-
+    containerView.backgroundColor = nil
+    nameLabel.text = user.name
+    roleLabel.text = user.role.name
+    passwordTextfield.isSecureTextEntry = true
+    passwordTextfield.delegate = self
+    passwordTextfield.returnKeyType = .done
+    passwordTextfield.becomeFirstResponder()
+    
+    FacadeAPI.shared.getImage(from: user.avatarUrl ?? "") { [unowned self] (image) in
+      self.userImageView.image = image ?? #imageLiteral(resourceName: "NoImage")
+    }
   }
   
   @objc func dismissKeyboard() {
